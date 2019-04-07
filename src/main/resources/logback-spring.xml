@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <contextName>logback</contextName>
-    <!--<property name="log.path" value="/usr/log" />-->
+    <property name="log.path" value="/home/binji/logs" />
     <!--输出到控制台-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <!--此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
@@ -16,8 +16,11 @@
 
     <!--输出到debug-->
     <appender name="debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>log/logback-debug-%d{yyyy-MM-dd}.log</fileNamePattern>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/logback-debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>2KB</maxFileSize>
+            <maxHistory>5</maxHistory>
+            <totalSizeCap>11KB</totalSizeCap>
         </rollingPolicy>
         <append>true</append>
         <encoder>
@@ -33,8 +36,11 @@
 
     <!--输出到info-->
     <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>log/logback-info-%d{yyyy-MM-dd}.log</fileNamePattern>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/logback-info-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>10KB</maxFileSize>
+            <maxHistory>5</maxHistory>
+            <totalSizeCap>60KB</totalSizeCap>
         </rollingPolicy>
         <append>true</append>
         <encoder>
@@ -50,8 +56,11 @@
 
     <!--输出到error-->
     <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>log/logback-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/logback-error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>2KB</maxFileSize>
+            <maxHistory>5</maxHistory>
+            <totalSizeCap>11KB</totalSizeCap>
         </rollingPolicy>
         <append>true</append>
         <encoder>
@@ -67,8 +76,11 @@
 
     <!--输出到warn-->
     <appender name="warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>log/logback-warn-%d{yyyy-MM-dd}.log</fileNamePattern>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/logback-warn-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>2KB</maxFileSize>
+            <maxHistory>5</maxHistory>
+            <totalSizeCap>11KB</totalSizeCap>
         </rollingPolicy>
         <append>true</append>
         <encoder>
